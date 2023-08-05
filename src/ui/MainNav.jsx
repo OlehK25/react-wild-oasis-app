@@ -1,4 +1,9 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+import { FaCalendarAlt, FaHome } from "react-icons/fa";
+import { GiWoodCabin } from "react-icons/gi";
+import { FaUsers } from "react-icons/fa";
+import { FcSettings } from "react-icons/fc";
 
 const NavList = styled.ul`
   display: flex;
@@ -6,7 +11,7 @@ const NavList = styled.ul`
   gap: 0.8rem;
 `;
 
-const Link = styled.a`
+const StyledNavLink = styled(NavLink)`
   &:link,
   &:visited {
     display: flex;
@@ -44,3 +49,39 @@ const Link = styled.a`
     color: var(--color-brand-600);
   }
 `;
+
+function MainNav() {
+  return (
+    <nav>
+      <NavList>
+        <li>
+          <StyledNavLink to="/dashboard">
+            <FaHome /> Home
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="/bookings">
+            <FaCalendarAlt /> Bookings
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="/cabins">
+            <GiWoodCabin /> Cabins
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="/users">
+            <FaUsers /> Users
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="/settings">
+            <FcSettings /> Settings
+          </StyledNavLink>
+        </li>
+      </NavList>
+    </nav>
+  );
+}
+
+export default MainNav;
