@@ -1,11 +1,23 @@
-import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import { format, isToday } from "date-fns";
+import {
+  BsFillArrowDownCircleFill,
+  BsFillArrowUpCircleFill,
+  BsFillEyeFill,
+} from "react-icons/bs";
+import { RiDeleteBin5Fill } from "react-icons/ri";
+import styled from "styled-components";
 
 import Tag from "../../ui/Tag";
 import Table from "../../ui/Table";
+import Menus from "../../ui/Menus.jsx";
+import Modal from "../../ui/Modal.jsx";
+import ConfirmDelete from "../../ui/ConfirmDelete.jsx";
 
 import { formatCurrency } from "../../utils/helpers";
 import { formatDistanceFromNow } from "../../utils/helpers";
+import { useCheckout } from "../check-in-out/useCheckout.js";
+import { useDeleteBooking } from "./useDeleteBooking.js";
 
 const Cabin = styled.div`
   font-size: 1.6rem;
@@ -48,6 +60,10 @@ function BookingRow({
     cabins: { name: cabinName },
   },
 }) {
+  const navigate = useNavigate();
+  const { checkout, isCheckingOut } = useCheckout();
+  const { isDeleting, deleteBooking } = useDeleteBooking();
+
   const statusToTagName = {
     unconfirmed: "blue",
     "checked-in": "green",
@@ -79,6 +95,50 @@ function BookingRow({
       <Tag type={statusToTagName[status]}>{status.replace("-", " ")}</Tag>
 
       <Amount>{formatCurrency(totalPrice)}</Amount>
+      <Modal>
+        <Menus.Menu>
+          <Menus.Toggle id={bookingId}></Menus.Toggle>
+          <Menus.List id={bookingId}>
+            <Menus.Button
+              icon={<BsFillEyeFill />}
+              onClick={() => navigate(`/bookings/${bookingId}`)}
+            >
+              See Details
+            </Menus.Button>
+
+            {status === "unconfirmed" && (
+              <Menus.Button
+                icon={<BsFillArrowDownCircleFill />}
+                onClick={() => navigate(`/checkin/${bookingId}`)}
+              >
+                Check in
+              </Menus.Button>
+            )}
+
+            {status === "checked-in" && (
+              <Menus.Button
+                icon={<BsFillArrowUpCircleFill />}
+                onClick={() => checkout(bookingId)}
+                disabled={isCheckingOut}
+              >
+                Check out
+              </Menus.Button>
+            )}
+
+            <Modal.Open opens="delete">
+              <Menus.Button icon={<RiDeleteBin5Fill />}>Delete</Menus.Button>
+            </Modal.Open>
+          </Menus.List>
+
+          <Modal.Window name="delete">
+            <ConfirmDelete
+              onConfirm={() => deleteBooking(bookingId)}
+              resourceName="booking"
+              disabled={isDeleting}
+            />
+          </Modal.Window>
+        </Menus.Menu>
+      </Modal>
     </Table.Row>
   );
 }

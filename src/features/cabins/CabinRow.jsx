@@ -85,6 +85,7 @@ function CabinRow({ cabin }) {
               <Menus.Button
                 icon={<IoDuplicateSharp />}
                 onClick={handleDuplicate}
+                disabled={isCreating}
               >
                 Duplicate
               </Menus.Button>
@@ -105,7 +106,7 @@ function CabinRow({ cabin }) {
             <Modal.Window name="delete">
               <ConfirmDelete
                 onConfirm={() => deleteCabin(cabinId)}
-                resourceName="cabins"
+                resourceName="cabin"
                 disabled={isDeleting}
               />
             </Modal.Window>
