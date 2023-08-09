@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import Spinner from "../../ui/Spinner.jsx";
-import Stats from "./Stats.jsx";
+
 import { useRecentBookings } from "./useRecentBookings.js";
 import { useRecentStays } from "./useRecentStays.js";
 import { useCabins } from "../cabins/useCabins.js";
+import Spinner from "../../ui/Spinner.jsx";
+import Stats from "./Stats.jsx";
 import SalesChart from "./SalesChart.jsx";
 import DurationChart from "./DurationChart.jsx";
 import TodayActivity from "../check-in-out/TodayActivity.jsx";

@@ -1,10 +1,10 @@
-import Stat from "./Stat.jsx";
 import {
   HiBriefcase,
   HiOutlineBanknotes,
   HiOutlineCalendarDays,
   HiOutlineChartBar,
 } from "react-icons/hi2";
+import Stat from "./Stat.jsx";
 import { formatCurrency } from "../../utils/helpers.js";
 
 function Stats({ bookings, confirmedStays, numDays, cabinCount }) {

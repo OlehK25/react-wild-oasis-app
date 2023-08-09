@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import Logout from "../features/authentication/Logout.jsx";
-import ButtonIcon from "./ButtonIcon.jsx";
 import { useNavigate } from "react-router-dom";
 import { FaUserSecret } from "react-icons/fa6";
+import ButtonIcon from "./ButtonIcon.jsx";
+import Logout from "../features/authentication/Logout.jsx";
 import DartModeToggle from "./DartModeToggle.jsx";
 
 const StyledHeaderMenu = styled.ul`

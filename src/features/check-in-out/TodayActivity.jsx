@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 import Heading from "../../ui/Heading";
 import Row from "../../ui/Row";
-import { useTodayActivity } from "./useTodayActivity.js";
 import Spinner from "../../ui/Spinner.jsx";
 import TodayItem from "./TodayItem.jsx";
+import { useTodayActivity } from "./useTodayActivity.js";
 
 const StyledToday = styled.div`
   /* Box */

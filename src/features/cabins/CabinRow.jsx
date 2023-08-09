@@ -1,16 +1,17 @@
 import styled from "styled-components";
-
-import { formatCurrency } from "../../utils/helpers.js";
-import CreateCabinForm from "./CreateCabinForm.jsx";
-import { useDeleteCabin } from "./useDeleteCabin.js";
 import { IoDuplicateSharp } from "react-icons/io5";
 import { BiEdit } from "react-icons/bi";
 import { RiDeleteBin5Fill } from "react-icons/ri";
-import { useCreateCabin } from "./useCreateCabin.js";
+
+import CreateCabinForm from "./CreateCabinForm.jsx";
 import Modal from "../../ui/Modal.jsx";
 import ConfirmDelete from "../../ui/ConfirmDelete.jsx";
 import Table from "../../ui/Table.jsx";
 import Menus from "../../ui/Menus.jsx";
+
+import { useCreateCabin } from "./useCreateCabin.js";
+import { formatCurrency } from "../../utils/helpers.js";
+import { useDeleteCabin } from "./useDeleteCabin.js";
 
 const Img = styled.img`
   display: block;
