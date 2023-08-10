@@ -1,6 +1,8 @@
 # 🏨 The Wild Oasis
 
 An **stunning** web application for the hotel team. You can *insert/update/delete* cabins, *delete/update* bookings, create new users, update your account (avatar, name, password).
+ > I created a guest user account (only the admin can perform basic operations) 
+
  > Visit the live app [here](https://react-wild-oasis.netlify.app) 
 
 ## 🗒️ Implementation\Technology Stack
